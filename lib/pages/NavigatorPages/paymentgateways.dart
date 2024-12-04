@@ -58,11 +58,11 @@ Page resource error:
                 pop = true;
                 _success = true;
               });
-            } else if (request.url.startsWith('${url}failure')) {
+            } else if (request.url.startsWith('${base_url}failure')) {
               setState(() {
                 pop = false;
               });
-            } else if (request.url.startsWith('${url}failure')) {
+            } else if (request.url.startsWith('${base_url}failure')) {
               setState(() {
                 pop = true;
               });

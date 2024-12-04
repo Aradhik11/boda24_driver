@@ -128,7 +128,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
         },
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'product name',
+          title: 'Driver',
           theme: ThemeData(),
           home: const LoadingPage(),
           builder: (context, child) {

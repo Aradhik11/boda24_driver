@@ -1,3 +1,6 @@
+group 'com.dsaved.bubblehead.bubble'
+version '1.0'
+
 buildscript {
     ext.kotlin_version = '1.9.10'
     repositories {
@@ -6,7 +9,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.7.2'
+        classpath 'com.android.tools.build:gradle:8.1.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.google.gms:google-services:4.3.15'
     }
@@ -16,6 +19,17 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+    }
+    subprojects {
+        afterEvaluate { project ->
+            if (project.hasProperty('android')) {
+                project.android {
+                    if (namespace == null) {
+                        namespace project.group
+                    }
+                }
+            }
+        }
     }
 }
 

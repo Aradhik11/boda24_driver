@@ -6,31 +6,35 @@ import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
 import android.content.Intent
 
-class MainActivity: FlutterFragmentActivity() {
+class MainActivity : FlutterFragmentActivity() {
     private val channel = "flutter.app/awake"
     override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
-    MethodChannel(flutterEngine.dartExecutor.binaryMessenger, channel).setMethodCallHandler {
-      call, result ->
-      // This method is invoked on the main thread.
-      // TODO
-      
-      if(call.method == "awakeapp"){
-          awakeapp()
-      }else{
-          println("message recieved in activityyyy")
-      }
+        MethodChannel(
+            flutterEngine.dartExecutor.binaryMessenger,
+            channel
+        ).setMethodCallHandler { call, result ->
+            // This method is invoked on the main thread.
+            // TODO
+
+            if (call.method == "awakeapp") {
+                awakeapp()
+            } else {
+                println("message recieved in activityyyy")
+            }
+        }
     }
-    }
-      private fun awakeapp(){
+
+    private fun awakeapp() {
         val bringToForegroundIntent = Intent(this, MainActivity::class.java);
-        if(bringToForegroundIntent != null){
-startActivity(bringToForegroundIntent);
-        }else{
-val launchIntent = getPackageManager().getLaunchIntentForPackage("com.package.name");
-if (launchIntent != null) { 
-    startActivity(launchIntent);//null pointer check in case com.package.name was not found
-}   }
+        if (bringToForegroundIntent != null) {
+            startActivity(bringToForegroundIntent);
+        } else {
+            val launchIntent = getPackageManager().getLaunchIntentForPackage("com.package.name");
+            if (launchIntent != null) {
+                startActivity(launchIntent);//null pointer check in case com.package.name was not found
+            }
+        }
 
     }
 }

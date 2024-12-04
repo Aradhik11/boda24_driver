@@ -34,7 +34,7 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
     namespace "com.boda24.driver"
-    compileSdkVersion flutter.compileSdkVersion
+    compileSdkVersion 34
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -81,8 +81,8 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
-        shrinkResources false
+            minifyEnabled true
+            shrinkResources true
             signingConfig signingConfigs.release
         }
     }
